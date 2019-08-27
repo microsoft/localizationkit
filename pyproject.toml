@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "localizationkit"
+version = "0.1.0"
+description = "String localization tests"
+
+license = "MIT"
+
+authors = [
+    "Dale Myers <dalemy@microsoft.com>"
+]
+
+readme = 'README.md'
+
+repository = "https://github.com/Microsoft/localizationkit"
+homepage = "https://github.com/Microsoft/localizationkit"
+
+keywords = ['localization', 'strings', 'tests']
+
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Testing',
+    'Topic :: Utilities'
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+toml = "=0.10.0"
+
+[tool.poetry.dev-dependencies]
+black = "=19.3b0"
+mypy = "=0.670"
+pylint = "=2.3.1"
+pytest = "=4.0.1"
+pytest-cov = "=2.6.0"
+
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

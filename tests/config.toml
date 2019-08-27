@@ -1,0 +1,15 @@
+default_language = "en"
+blacklist = []
+
+[comment_similarity]
+maximum_comment_similarity_ratio = 0.8
+
+[has_comments]
+minimum_comment_length = 25
+minimum_comment_words = 8
+
+[token_matching]
+allow_missing_defaults = true
+
+[token_position_identifiers]
+always = false
