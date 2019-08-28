@@ -24,6 +24,9 @@ class CheckCommentSimilarity(LocalizationTestCase):
         violations = []
 
         for string in self.collection.strings_for_language(self.configuration.default_language()):
+            if string.value is None or string.comment is None:
+                continue
+
             similarity = difflib.SequenceMatcher(None, string.value, string.comment).ratio()
 
             if similarity > maximum_comment_similarity_ratio:

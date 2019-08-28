@@ -68,7 +68,7 @@ class LocalizationTestCase(abc.ABC):
         try:
             violations = self.run_test()
 
-            if not violations:
+            if violations is None:
                 raise Exception(f"Failed to get exceptions from test: {self.__class__.name()}")
 
             if len(violations):
