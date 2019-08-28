@@ -65,7 +65,10 @@ class LocalizationTestCase(abc.ABC):
 
         :returns: A test result
         """
-        violations = self.run_test()
-        if len(violations):
-            return TestResult.failure(self.__class__.name(), violations)
-        return TestResult.success(self.__class__.name())
+        try:
+            violations = self.run_test()
+            if len(violations):
+                return TestResult.failure(self.__class__.name(), violations)
+            return TestResult.success(self.__class__.name())
+        except Exception as ex:
+            return TestResult.failure(self.__class__.name(), [str(ex)])
