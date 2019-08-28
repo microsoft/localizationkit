@@ -25,6 +25,9 @@ class TokenPositionIdentifiers(LocalizationTestCase):
         for string in self.collection.localized_strings:
             tokens = string.tokens()
 
+            if not tokens or len(tokens) == 0:
+                continue
+
             # If it has fewer than 2 tokens and we aren't set to always, we can
             # just skip
             if len(tokens) < 2 and not always:

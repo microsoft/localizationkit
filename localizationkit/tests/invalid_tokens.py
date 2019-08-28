@@ -27,7 +27,7 @@ class InvalidTokens(LocalizationTestCase):
             matches = invalid_token_pattern.findall(string.value)
 
             # Any matches are a bad thing
-            if len(matches) > 0:
+            if matches and len(matches) > 0:
                 violations.append(f"Translation contains invalid tokens ({matches}): {string}")
 
         return violations
