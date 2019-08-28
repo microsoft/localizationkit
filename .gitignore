@@ -3,5 +3,6 @@ __pycache__
 .pytest_cache
 *.egg-info/
 bin/
+dist/
 lib/
 pyvenv.cfg
