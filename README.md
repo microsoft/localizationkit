@@ -105,6 +105,21 @@ Checks the similarity between a comment and the string's value in the default la
 
 </details>
 
+## Duplicate Keys
+
+Identifier: `duplicate_keys`
+
+Checks that there are no duplicate keys in the collection.
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `all_languages` | boolean | `true` or `false` | `false` | Set to `true` to check that every language has unique keys, not just the default language. |
+
+</details>
+
 ## Has Comments
 
 Identifier: `has_comments`

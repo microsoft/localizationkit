@@ -1,6 +1,7 @@
 """Toolkit for validation of localized strings."""
 
 import localizationkit.tests.comment_similarity
+import localizationkit.tests.duplicate_keys
 import localizationkit.tests.has_comments
 import localizationkit.tests.has_value
 import localizationkit.tests.invalid_tokens
