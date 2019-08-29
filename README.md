@@ -48,7 +48,7 @@ Now we need to prepare the strings that will go in. Here's how you can create an
 ```python
 from localizationkit import LocalizedString
 
-my_string = LocalizedString("My string's key", "My string's value", "My strings comment", "en")
+my_string = LocalizedString("My string's key", "My string's value", "My string's comment", "en")
 ```
 
 This creates a single string with a key, value and comment, with its language code set to `en`. Once you've created some more (usually for different languages too), you can bundle them into a collection:
@@ -126,7 +126,7 @@ Identifier: `has_comments`
 
 Checks that strings have comments.
 
-_Note: Only languages that have latin style scripts are really supported for the words check due to splitting on spaces to check._
+_Note: Only languages that have Latin style scripts are really supported for the words check due to splitting on spaces to check._
 
 <details>
     <summary>Configuration</summary>
@@ -150,7 +150,7 @@ Identifier: `invalid_tokens`
 
 Checks that all format tokens in a string are valid.
 
-_Note: This check is not langauge specific. It only works very broadly._
+_Note: This check is not language specific. It only works very broadly._
 
 ## Key Length
 
@@ -190,7 +190,7 @@ Checks that strings do not contain Swift style interpolation values since these 
 
 Identifier: `token_matching`
 
-Checks that the tokens in a string match across all languages. e.g. If your English string is "Hello %s" but your French string is "Boujour", this would flag that there is a missing token in the French string.
+Checks that the tokens in a string match across all languages. e.g. If your English string is "Hello %s" but your French string is "Bonjour", this would flag that there is a missing token in the French string.
 
 <details>
     <summary>Configuration</summary>

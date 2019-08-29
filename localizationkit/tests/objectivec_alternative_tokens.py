@@ -35,7 +35,7 @@ class ObjectivecAlternativeTokens(LocalizationTestCase):
         for string in self.collection.localized_strings:
 
             if pattern.findall(string.value):
-                violations.append(f"Objective-C altnernative tokens were found in string: {string}")
+                violations.append(f"Objective-C alternative tokens were found in string: {string}")
                 continue
 
         return violations
