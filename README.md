@@ -121,6 +121,12 @@ _Note: Only languages that have latin style scripts are really supported for the
 
 </details>
 
+## Has Value
+
+Identifier: `has_value`
+
+Checks that strings have values. Since any value is enough for some strings, it simply makes sure that the string isn't None/null and isn't empty.
+
 ## Invalid Tokens
 
 Identifier: `invalid_tokens`
