@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "localizationkit"
-version = "0.5.0"
+version = "0.6.0"
 description = "String localization tests"
 
 license = "MIT"
