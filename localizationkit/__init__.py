@@ -54,12 +54,17 @@ def run_tests(configuration: Configuration, collection: LocalizedCollection) -> 
 
     test_classes = _find_tests()
     blacklist = set(configuration.blacklist())
+    opt_ins = set(configuration.opt_in())
 
     results = []
 
     for test_class in test_classes:
         if test_class.name() in blacklist:
             continue
+
+        if test_class.is_opt_in() and test_class.name() not in opt_ins:
+            continue
+
         test_instance = test_class(configuration, collection)
         results.append(test_instance.execute())
 

@@ -29,6 +29,13 @@ class Configuration:
         """
         return self.raw_config.get("blacklist", [])
 
+    def opt_in(self) -> List[str]:
+        """Return the list of opted in tests.
+
+        :returns: The opted in tests
+        """
+        return self.raw_config.get("opt_in", [])
+
     def get_test_preferences(self, name: str) -> Dict[str, Any]:
         """Get the preferences for a given test.
 

@@ -52,6 +52,17 @@ class LocalizationTestCase(abc.ABC):
         """
         raise NotImplementedError("default_settings should always be overridden")
 
+    @classmethod
+    def is_opt_in(cls) -> bool:
+        """Check if the test is opt in or not.
+
+        Not all tests make sense for everyone (e.g. language specific tests), so
+        we make those opt in
+
+        :returns: True if this is an opt in method, False otherwise
+        """
+        return False
+
     @abc.abstractmethod
     def run_test(self) -> List[str]:
         """Run the test

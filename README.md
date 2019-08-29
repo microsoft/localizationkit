@@ -88,6 +88,8 @@ blacklist = ["test_identifier_1", "test_identifier_2"]
 
 Most tests have configurable rules. If a rule is not specified, it will use the default instead.
 
+Some tests are opt in only. These will be marked as such.
+
 ## Comment Similarity
 
 Identifier: `comment_similarity`
@@ -152,6 +154,15 @@ _Note: By default this test doesn't check anything. It needs to have parameters 
 | `maximum` | int | Any integer | -1 | Set the maximum allowable length for a key. Set the value to negative to not check. |
 
 </details>
+
+## Objective-C Alternative Tokens
+
+Identifier: `objectivec_alternative_tokens`
+Opt-In: `true`
+
+Checks that strings do not contain Objective-C style alternative position tokens.
+
+Objective-C seems to be allows positional tokens of the form `%1@` rather than `%1$@`. While not illegal, it is preferred that all tokens between languages are consistent so that tools don't experience unexpected failures, etc.
 
 ## Token Matching
 
