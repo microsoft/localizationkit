@@ -8,6 +8,9 @@ maximum_similarity_ratio = 0.8
 minimum_comment_length = 25
 minimum_comment_words = 8
 
+[key_length]
+minimum = 3
+
 [token_matching]
 allow_missing_defaults = true
 

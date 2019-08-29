@@ -129,6 +129,24 @@ Checks that all format tokens in a string are valid.
 
 _Note: This check is not langauge specific. It only works very broadly._
 
+## Key Length
+
+Identifier: `key_length`
+
+Checks the length of the keys.
+
+_Note: By default this test doesn't check anything. It needs to have parameters set to positive values to do anything._
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `minimum` | int | Any integer | -1 | Set the minimum allowable length for a key. Set the value to negative to not check. |
+| `maximum` | int | Any integer | -1 | Set the maximum allowable length for a key. Set the value to negative to not check. |
+
+</details>
+
 ## Token Matching
 
 Identifier: `token_matching`
