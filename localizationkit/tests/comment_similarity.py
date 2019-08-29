@@ -15,11 +15,11 @@ class CheckCommentSimilarity(LocalizationTestCase):
 
     @classmethod
     def default_settings(cls) -> Dict[str, Any]:
-        return {"maximum_comment_similarity_ratio": 0.5}
+        return {"maximum_similarity_ratio": 0.5}
 
     def run_test(self) -> List[str]:
 
-        maximum_comment_similarity_ratio = self.get_setting("maximum_comment_similarity_ratio")
+        maximum_similarity_ratio = self.get_setting("maximum_similarity_ratio")
 
         violations = []
 
@@ -29,9 +29,9 @@ class CheckCommentSimilarity(LocalizationTestCase):
 
             similarity = difflib.SequenceMatcher(None, string.value, string.comment).ratio()
 
-            if similarity > maximum_comment_similarity_ratio:
+            if similarity > maximum_similarity_ratio:
                 violations.append(
-                    f"Value and comment exceeded similarity ratio of {maximum_comment_similarity_ratio}: {string}"
+                    f"Value and comment exceeded similarity ratio of {maximum_similarity_ratio}: {string}"
                 )
                 continue
 

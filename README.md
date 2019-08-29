@@ -84,6 +84,81 @@ Some tests don't make sense for everyone. To skip a test you can add the followi
 blacklist = ["test_identifier_1", "test_identifier_2"]
 ```
 
+# Rule documentation
+
+Most tests have configurable rules. If a rule is not specified, it will use the default instead.
+
+## Comment Similarity
+
+Identifier: `comment_similarity`
+
+Checks the similarity between a comment and the string's value in the default language. This is achieved via `difflib`'s `SequenceMatcher`. More details can be found [here](https://docs.python.org/3/library/difflib.html#difflib.SequenceMatcher.ratio)
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `maximum_similarity_ratio` | float | Between 0 and 1 | 0.5 | Set the maximum similarity ratio between the comment and the string value. The higher the value, the more similar they are. The longer the string the more accurate this will be. |
+
+</details>
+
+## Has Comments
+
+Identifier: `has_comments`
+
+Checks that strings have comments.
+
+_Note: Only languages that have latin style scripts are really supported for the words check due to splitting on spaces to check._
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `minimum_comment_length` | int | Any integer | 30 | Set the minimum allowable length for a comment. Set the value to negative to not check. |
+| `minimum_comment_words` | int | Any integer | 10 | Set the minimum allowable number of words for a comment. Set the value to negative to not check. |
+
+</details>
+
+## Invalid Tokens
+
+Identifier: `invalid_tokens`
+
+Checks that all format tokens in a string are valid.
+
+_Note: This check is not langauge specific. It only works very broadly._
+
+## Token Matching
+
+Identifier: `token_matching`
+
+Checks that the tokens in a string match across all languages. e.g. If your English string is "Hello %s" but your French string is "Boujour", this would flag that there is a missing token in the French string.
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `allow_missing_defaults` | boolean | `true` or `false` | `false` | Due to the way that automated localization works, usually there will be a default language, and then other translations will come in over time. If a translation is deleted, it isn't always deleted from all languages immediately. Setting this parameter to true will allow any strings in your non-default language to be ignored if that string is missing from your default language. |
+
+</details>
+
+## Token Position Identifiers
+
+Identifier: `token_position_identifiers`
+
+Check that each token has a position specifier with it. e.g. `%s` is not allowed, but `%1$s` is. Tokens can move around in different languages, so position specifiers are extremely important.
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `always` | boolean | `true` or `false` | `false` | If a string only has a single token, it doesn't need a position specifier. Set this to `true` to require it even in those cases.
+
+</details>
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

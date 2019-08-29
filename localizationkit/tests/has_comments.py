@@ -14,7 +14,7 @@ class HasComments(LocalizationTestCase):
 
     @classmethod
     def default_settings(cls) -> Dict[str, Any]:
-        return {"minimum_comment_length": 1, "minimum_comment_words": 1}
+        return {"minimum_comment_length": 30, "minimum_comment_words": 10}
 
     def run_test(self) -> List[str]:
 
@@ -29,17 +29,13 @@ class HasComments(LocalizationTestCase):
                 violations.append(f"Comment was empty: {string}")
                 continue
 
-            if len(string.comment) == 0:
-                violations.append(f"Comment was empty: {string}")
-                continue
-
-            if len(string.comment) < minimum_comment_length:
+            if minimum_comment_length >= 0 and len(string.comment) < minimum_comment_length:
                 violations.append(
                     f"Comment did not meet minimum length of {minimum_comment_length}: {string}"
                 )
                 continue
 
-            if len(string.comment.split(" ")) < minimum_comment_words:
+            if minimum_comment_words >= 0 and len(string.comment.split(" ")) < minimum_comment_words:
                 violations.append(
                     f"Comment did not meet minimum word count of {minimum_comment_words}: {string}"
                 )
