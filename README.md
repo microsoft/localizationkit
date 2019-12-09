@@ -93,6 +93,7 @@ Some tests are opt in only. These will be marked as such.
 ## Comment Linebreaks
 
 Identifier: `comment_linebreaks`
+Opt-In: `true`
 
 Checks that comments for strings do not contain linebreaks. Comments which contain linebreaks can interfere with parsing in other tools such as [dotstrings](https://github.com/microsoft/dotstrings).
 
