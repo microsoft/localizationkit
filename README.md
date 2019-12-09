@@ -90,6 +90,12 @@ Most tests have configurable rules. If a rule is not specified, it will use the 
 
 Some tests are opt in only. These will be marked as such.
 
+## Comment Linebreaks
+
+Identifier: `comment_linebreaks`
+
+Checks that comments for strings do not contain linebreaks. Comments which contain linebreaks can interfere with parsing in other tools such as [dotstrings](https://github.com/microsoft/dotstrings).
+
 ## Comment Similarity
 
 Identifier: `comment_similarity`
