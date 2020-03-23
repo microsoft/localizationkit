@@ -25,19 +25,21 @@ class HasValueTests(unittest.TestCase):
         good_values = [" ", "1", "Two three four", "     "]
 
         for value in bad_values:
-            string = localizationkit.LocalizedString("Key", value, "Comment", "en")
-            collection = localizationkit.LocalizedCollection([string])
-            has_value_test = localizationkit.tests.has_value.HasValue(
-                self.configuration, collection
-            )
-            result = has_value_test.execute()
-            self.assertFalse(result.succeeded())
+            for language in ["en", "fr"]:
+                string = localizationkit.LocalizedString("Key", value, "Comment", language)
+                collection = localizationkit.LocalizedCollection([string])
+                has_value_test = localizationkit.tests.has_value.HasValue(
+                    self.configuration, collection
+                )
+                result = has_value_test.execute()
+                self.assertFalse(result.succeeded())
 
         for value in good_values:
-            string = localizationkit.LocalizedString("Key", value, "Comment", "en")
-            collection = localizationkit.LocalizedCollection([string])
-            has_value_test = localizationkit.tests.has_value.HasValue(
-                self.configuration, collection
-            )
-            result = has_value_test.execute()
-            self.assertTrue(result.succeeded(), str(result.violations))
+            for language in ["en", "fr"]:
+                string = localizationkit.LocalizedString("Key", value, "Comment", language)
+                collection = localizationkit.LocalizedCollection([string])
+                has_value_test = localizationkit.tests.has_value.HasValue(
+                    self.configuration, collection
+                )
+                result = has_value_test.execute()
+                self.assertTrue(result.succeeded(), str(result.violations))

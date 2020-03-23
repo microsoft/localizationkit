@@ -14,14 +14,18 @@ class HasValue(LocalizationTestCase):
 
     @classmethod
     def default_settings(cls) -> Dict[str, Any]:
-        return {}
+        return {"default_language_only": False}
 
     def run_test(self) -> List[str]:
 
         violations: List[str] = []
 
-        for string in self.collection.strings_for_language(self.configuration.default_language()):
+        if self.get_setting("default_language_only"):
+            test_collection = self.collection.strings_for_language(self.configuration.default_language())
+        else:
+            test_collection = self.collection.localized_strings
 
+        for string in test_collection:
             if string.value is None or len(string.value) == 0:
                 violations.append(f"Value was empty: {string}")
                 continue

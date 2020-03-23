@@ -151,6 +151,15 @@ Identifier: `has_value`
 
 Checks that strings have values. Since any value is enough for some strings, it simply makes sure that the string isn't None/null and isn't empty.
 
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `default_language_only` | boolean | `true` or `false` | `false` | Set to true to only check the default language for missing values. Otherwise all languages will be checked. |
+
+</details>
+
 ## Invalid Tokens
 
 Identifier: `invalid_tokens`
