@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "localizationkit"
-version = "0.11.0"
+version = "1.0.0"
 description = "String localization tests"
 
 license = "MIT"
@@ -29,7 +29,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-toml = "=0.10.0"
+toml = "^0.10.0"
 
 [tool.poetry.dev-dependencies]
 black = "=19.3b0"
