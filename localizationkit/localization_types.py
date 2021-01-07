@@ -36,6 +36,13 @@ class LocalizedString:
         """
         return LocalizedString._TOKEN_PATTERN.findall(self.value)
 
+    def comment_tokens(self) -> List[str]:
+        """Find and return the tokens in the comment string.
+
+        :returns: The list of tokens in the comment string
+        """
+        return LocalizedString._TOKEN_PATTERN.findall(self.comment)
+
     def __str__(self) -> str:
         """Generate and return the string representation of the object.
 

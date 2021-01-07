@@ -11,3 +11,4 @@ import localizationkit.tests.objectivec_alternative_tokens
 import localizationkit.tests.swift_interpolation
 import localizationkit.tests.token_matching
 import localizationkit.tests.token_position_identifiers
+import localizationkit.tests.placeholder_token_explanation
