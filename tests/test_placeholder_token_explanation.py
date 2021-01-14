@@ -61,28 +61,13 @@ class PlaceholderTokenExplanationTests(unittest.TestCase):
                     "Key", "This is a string", "Some comment %@ extra token explanation", "en"
                 ),
             ),
-            (
-                False,
-                localizationkit.LocalizedString(
-                    "Key", "This is a string with two incorrect positioned tokens %1$@ %3$@", "Some comment %1$@ token explanantion %2$@ token explanantion", "en"
-                ),
-            ),
-            (
-                False,
-                localizationkit.LocalizedString(
-                    "Key", "This is a string with two tokens: %1$@ %2$@", "Some comment with incorrect poistioned token explanantion %1$@ token explanation %3$@ token explanation", "en"
-                ),
-            ),
         ]
 
-        for (expected_result, string) in test_cases:
+        for expected_result, string in test_cases:
             collection = localizationkit.LocalizedCollection([string])
             test = localizationkit.tests.placeholder_token_explanation.PlaceholderTokenExplanation(
                 self.configuration,
                 collection
             )
             result = test.execute()
-            if expected_result:
-                self.assertTrue(result.succeeded())
-            else:
-                self.assertFalse(result.succeeded())
+            self.assertEqual(expected_result, result.succeeded())

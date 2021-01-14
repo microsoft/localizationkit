@@ -232,6 +232,14 @@ Check that each token has a position specifier with it. e.g. `%s` is not allowed
 
 </details>
 
+## Placeholder token explanation
+
+Identifier: `placeholder_token_explanation`
+Opt-In: `true`
+
+Checks that if a placeholder is used in a string, the comment explicitly explain what it is replaced with.
+Precondition: Each placeholder in the string and its explanation in comment is expected to follow `token_position_identifiers` rule.
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
