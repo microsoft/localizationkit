@@ -195,6 +195,15 @@ Checks that strings do not contain Objective-C style alternative position tokens
 
 Objective-C seems to be allows positional tokens of the form `%1@` rather than `%1$@`. While not illegal, it is preferred that all tokens between languages are consistent so that tools don't experience unexpected failures, etc.
 
+## Placeholder token explanation
+
+Identifier: `placeholder_token_explanation`
+Opt-In: `true`
+
+Checks that if a placeholder is used in a string, the comment explicitly explains what it is replaced with.
+
+Precondition: Each placeholder in the string and its explanation in comment is expected to follow `token_position_identifiers` rule.
+
 ## Swift Interpolation
 
 Identifier: `swift_interpolation`
@@ -231,14 +240,6 @@ Check that each token has a position specifier with it. e.g. `%s` is not allowed
 | `always` | boolean | `true` or `false` | `false` | If a string only has a single token, it doesn't need a position specifier. Set this to `true` to require it even in those cases.
 
 </details>
-
-## Placeholder token explanation
-
-Identifier: `placeholder_token_explanation`
-Opt-In: `true`
-
-Checks that if a placeholder is used in a string, the comment explicitly explains what it is replaced with.
-Precondition: Each placeholder in the string and its explanation in comment is expected to follow `token_position_identifiers` rule.
 
 # Contributing
 
