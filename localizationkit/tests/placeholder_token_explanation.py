@@ -16,6 +16,10 @@ class PlaceholderTokenExplanation(LocalizationTestCase):
     def default_settings(cls) -> Dict[str, Any]:
         return {}
 
+    @classmethod
+    def is_opt_in(cls) -> bool:
+        return True
+
     def run_test(self) -> List[str]:
 
         violations = []
