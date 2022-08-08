@@ -21,7 +21,9 @@ class HasValue(LocalizationTestCase):
         violations: List[str] = []
 
         if self.get_setting("default_language_only"):
-            test_collection = self.collection.strings_for_language(self.configuration.default_language())
+            test_collection = self.collection.strings_for_language(
+                self.configuration.default_language()
+            )
         else:
             test_collection = self.collection.localized_strings
 

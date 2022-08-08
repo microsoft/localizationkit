@@ -54,5 +54,5 @@ class Configuration:
         :returns: The parsed configuration object
         """
 
-        with open(file_path) as config_file:
+        with open(file_path, encoding="utf-8") as config_file:
             return Configuration(cast(Dict[str, Any], toml.load(config_file)))

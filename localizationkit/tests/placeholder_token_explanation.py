@@ -32,9 +32,13 @@ class PlaceholderTokenExplanation(LocalizationTestCase):
             extra_in_comments = comment_tokens - tokens
 
             if len(extra_in_tokens) != 0:
-                violations.append(f"Tokens are not described in the comment ({extra_in_tokens}): {string}")
+                violations.append(
+                    f"Tokens are not described in the comment ({extra_in_tokens}): {string}"
+                )
 
             if len(extra_in_comments) != 0:
-                violations.append(f"Extra tokens appear in the comment ({extra_in_comments}): {string}")
+                violations.append(
+                    f"Extra tokens appear in the comment ({extra_in_comments}): {string}"
+                )
 
         return violations

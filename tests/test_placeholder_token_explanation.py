@@ -31,13 +31,19 @@ class PlaceholderTokenExplanationTests(unittest.TestCase):
             (
                 True,
                 localizationkit.LocalizedString(
-                    "Key", "This is a string with one token: %@", "Some comment %@ token explanation", "en"
+                    "Key",
+                    "This is a string with one token: %@",
+                    "Some comment %@ token explanation",
+                    "en",
                 ),
             ),
             (
                 True,
                 localizationkit.LocalizedString(
-                    "Key", "This is a string with two tokens: %1$@ %2$@", "Some comment %1$@ token explanantion %2$@ token explanantion", "en"
+                    "Key",
+                    "This is a string with two tokens: %1$@ %2$@",
+                    "Some comment %1$@ token explanantion %2$@ token explanantion",
+                    "en",
                 ),
             ),
             (
@@ -52,7 +58,10 @@ class PlaceholderTokenExplanationTests(unittest.TestCase):
             (
                 False,
                 localizationkit.LocalizedString(
-                    "Key", "This is a string with two tokens: %1$@ %2$@", "Some comment %@ token explanation missing some token explanantion", "en"
+                    "Key",
+                    "This is a string with two tokens: %1$@ %2$@",
+                    "Some comment %@ token explanation missing some token explanantion",
+                    "en",
                 ),
             ),
             (
@@ -66,8 +75,7 @@ class PlaceholderTokenExplanationTests(unittest.TestCase):
         for expected_result, string in test_cases:
             collection = localizationkit.LocalizedCollection([string])
             test = localizationkit.tests.placeholder_token_explanation.PlaceholderTokenExplanation(
-                self.configuration,
-                collection
+                self.configuration, collection
             )
             result = test.execute()
             self.assertEqual(expected_result, result.succeeded())
