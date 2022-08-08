@@ -6,3 +6,6 @@ bin/
 dist/
 lib/
 pyvenv.cfg
+junit
+.coverage
+coverage.xml
