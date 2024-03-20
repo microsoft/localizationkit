@@ -1,6 +1,5 @@
 """Has value tests."""
 
-
 import os
 import sys
 

@@ -45,7 +45,7 @@ def test_token_position_identifiers(configuration):
         ),
     ]
 
-    for (expected_result, string) in test_cases:
+    for expected_result, string in test_cases:
         collection = localizationkit.LocalizedCollection([string])
         test = localizationkit.tests.token_position_identifiers.TokenPositionIdentifiers(
             configuration, collection

@@ -1,6 +1,5 @@
 """Token matching tests."""
 
-
 import os
 import sys
 
@@ -69,7 +68,7 @@ def test_token_matching(configuration):
         ),
     ]
 
-    for (expected_result, strings) in test_cases:
+    for expected_result, strings in test_cases:
         collection = localizationkit.LocalizedCollection(strings)
         test = localizationkit.tests.token_matching.TokenMatching(configuration, collection)
         result = test.execute()

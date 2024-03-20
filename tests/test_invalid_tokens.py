@@ -31,7 +31,7 @@ def test_invalid_tokens(configuration):
         (False, localizationkit.LocalizedString("Key", "This is %d off", "Some comment", "en")),
     ]
 
-    for (has_invalid_tokens, string) in test_cases:
+    for has_invalid_tokens, string in test_cases:
         collection = localizationkit.LocalizedCollection([string])
         test = localizationkit.tests.invalid_tokens.InvalidTokens(configuration, collection)
         result = test.execute()
