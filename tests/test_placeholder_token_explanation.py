@@ -1,6 +1,5 @@
 """Placeholder token explanation tests."""
 
-
 import os
 import sys
 

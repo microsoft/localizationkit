@@ -4,6 +4,7 @@ import abc
 from typing import Any, Dict, List
 
 from localizationkit.configuration import Configuration
+from localizationkit.exceptions import LocalizationKitException
 from localizationkit.localization_types import LocalizedCollection
 from localizationkit.utility_types import TestResult
 
@@ -80,7 +81,9 @@ class LocalizationTestCase(abc.ABC):
             violations = self.run_test()
 
             if violations is None:
-                raise Exception(f"Failed to get exceptions from test: {self.__class__.name()}")
+                raise LocalizationKitException(
+                    f"Failed to get exceptions from test: {self.__class__.name()}"
+                )
 
             if len(violations):
                 return TestResult.failure(self.__class__.name(), violations)

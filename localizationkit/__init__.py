@@ -1,11 +1,10 @@
 """Toolkit for validation of localized strings."""
 
-import abc
-import difflib
 import inspect
-from typing import Any, Dict, List, Optional, Set, Type
+from typing import List, Set, Type
 
 from localizationkit.configuration import Configuration
+from localizationkit.exceptions import LocalizationKitException
 from localizationkit.localization_types import LocalizedCollection, LocalizedString
 from localizationkit.utility_types import TestResult
 from localizationkit.tests.test_case import LocalizationTestCase
@@ -40,7 +39,7 @@ def _find_tests() -> List[Type[LocalizationTestCase]]:
                 continue
 
             if reference.__name__ in names_seen:
-                raise Exception(
+                raise LocalizationKitException(
                     "At least 2 classes exist with the same name: " + reference.__name__
                 )
 
