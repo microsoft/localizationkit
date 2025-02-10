@@ -21,7 +21,7 @@ class InvalidTokens(LocalizationTestCase):
 
         violations = []
 
-        invalid_token_pattern = re.compile(r"(%[^@%\.a-z0-9 ]+)", flags=re.DOTALL)
+        invalid_token_pattern = re.compile(r"(%[^@%\.a-zA-Z0-9 ]+)", flags=re.DOTALL)
 
         for string in self.collection.localized_strings:
             matches = invalid_token_pattern.findall(string.value)
