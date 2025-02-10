@@ -1,7 +1,7 @@
 """Types for localization."""
 
 import re
-from typing import ClassVar, List, Pattern
+from typing import ClassVar, Pattern
 
 
 class LocalizedString:
@@ -29,14 +29,14 @@ class LocalizedString:
         self.comment = comment
         self.language_code = language_code
 
-    def tokens(self) -> List[str]:
+    def tokens(self) -> list[str]:
         """Find and return the tokens in the string.
 
         :returns: The list of tokens in the string
         """
         return LocalizedString._TOKEN_PATTERN.findall(self.value)
 
-    def comment_tokens(self) -> List[str]:
+    def comment_tokens(self) -> list[str]:
         """Find and return the tokens in the comment string.
 
         :returns: The list of tokens in the comment string
@@ -64,12 +64,12 @@ class LocalizedCollection:
     :param localized_strings: The list of localized strings in the collection
     """
 
-    localized_strings: List[LocalizedString]
+    localized_strings: list[LocalizedString]
 
-    def __init__(self, localized_strings: List[LocalizedString]) -> None:
+    def __init__(self, localized_strings: list[LocalizedString]) -> None:
         self.localized_strings = localized_strings
 
-    def strings_for_key(self, key: str) -> List[LocalizedString]:
+    def strings_for_key(self, key: str) -> list[LocalizedString]:
         """Return all the strings matching the key
 
         i.e. This will have a list of strings with identical keys, but different
@@ -79,7 +79,7 @@ class LocalizedCollection:
         """
         return [string for string in self.localized_strings if string.key == key]
 
-    def strings_for_language(self, language_code: str) -> List[LocalizedString]:
+    def strings_for_language(self, language_code: str) -> list[LocalizedString]:
         """Return all the strings matching the language code
 
         :returns: The list of strings with the matching language code
@@ -88,7 +88,7 @@ class LocalizedCollection:
             string for string in self.localized_strings if string.language_code == language_code
         ]
 
-    def languages(self) -> List[str]:
+    def languages(self) -> list[str]:
         """Return the list of languages in the collection.
 
         :returns: The list of langauges in the collection

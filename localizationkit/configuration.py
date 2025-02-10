@@ -1,6 +1,6 @@
 """Configuration for localization tests."""
 
-from typing import Any, cast, Dict, List
+from typing import Any, cast
 
 import toml
 
@@ -8,9 +8,9 @@ import toml
 class Configuration:
     """Holds all the configuration data."""
 
-    raw_config: Dict[str, Any]
+    raw_config: dict[str, Any]
 
-    def __init__(self, raw_config: Dict[str, Any]) -> None:
+    def __init__(self, raw_config: dict[str, Any]) -> None:
         self.raw_config = raw_config
 
     def default_language(self) -> str:
@@ -22,21 +22,21 @@ class Configuration:
         """
         return self.raw_config.get("default_language", "en")
 
-    def blacklist(self) -> List[str]:
+    def blacklist(self) -> list[str]:
         """Return the list of blacklisted tests.
 
         :returns: The blacklisted tests
         """
         return self.raw_config.get("blacklist", [])
 
-    def opt_in(self) -> List[str]:
+    def opt_in(self) -> list[str]:
         """Return the list of opted in tests.
 
         :returns: The opted in tests
         """
         return self.raw_config.get("opt_in", [])
 
-    def get_test_preferences(self, name: str) -> Dict[str, Any]:
+    def get_test_preferences(self, name: str) -> dict[str, Any]:
         """Get the preferences for a given test.
 
         :param name: The name of the test
@@ -55,4 +55,4 @@ class Configuration:
         """
 
         with open(file_path, encoding="utf-8") as config_file:
-            return Configuration(cast(Dict[str, Any], toml.load(config_file)))
+            return Configuration(cast(dict[str, Any], toml.load(config_file)))

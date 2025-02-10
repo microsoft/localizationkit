@@ -1,6 +1,6 @@
 """Token position identifiers."""
 
-from typing import Any, Dict, List, Set, Tuple
+from typing import Any
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -13,10 +13,10 @@ class TokenPositionIdentifiers(LocalizationTestCase):
         return "token_position_identifiers"
 
     @classmethod
-    def default_settings(cls) -> Dict[str, Any]:
+    def default_settings(cls) -> dict[str, Any]:
         return {"always": False}
 
-    def run_test(self) -> List[Tuple[str, str]]:
+    def run_test(self) -> list[tuple[str, str]]:
 
         violations = []
 
@@ -34,7 +34,7 @@ class TokenPositionIdentifiers(LocalizationTestCase):
                 continue
 
             # Track the positions we've seen
-            positional_tokens: Set[int] = set()
+            positional_tokens: set[int] = set()
 
             for token in tokens:
                 if "$" not in token:

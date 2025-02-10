@@ -1,6 +1,6 @@
 """Checks key length."""
 
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -13,15 +13,15 @@ class KeyLength(LocalizationTestCase):
         return "key_length"
 
     @classmethod
-    def default_settings(cls) -> Dict[str, Any]:
+    def default_settings(cls) -> dict[str, Any]:
         return {"minimum": -1, "maximum": -1}
 
-    def run_test(self) -> List[Tuple[str, str]]:
+    def run_test(self) -> list[tuple[str, str]]:
 
         minimum_length = self.get_setting("minimum")
         maximum_length = self.get_setting("maximum")
 
-        violations: List[Tuple[str, str]] = []
+        violations: list[tuple[str, str]] = []
 
         # Short circuit for the non-bound case
         if minimum_length < 0 and maximum_length < 0:

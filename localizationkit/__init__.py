@@ -1,7 +1,7 @@
 """Toolkit for validation of localized strings."""
 
 import inspect
-from typing import List, Set, Type
+from typing import Type
 
 from localizationkit.configuration import Configuration
 from localizationkit.exceptions import LocalizationKitException
@@ -12,7 +12,7 @@ from localizationkit.tests.test_case import LocalizationTestCase
 from localizationkit import tests
 
 
-def _find_tests() -> List[Type[LocalizationTestCase]]:
+def _find_tests() -> list[Type[LocalizationTestCase]]:
     """Find all the tests."""
 
     test_module_names = [
@@ -20,8 +20,8 @@ def _find_tests() -> List[Type[LocalizationTestCase]]:
     ]
     test_modules = [getattr(tests, name) for name in test_module_names]
 
-    names_seen: Set[str] = set()
-    test_classes: List[Type[LocalizationTestCase]] = []
+    names_seen: set[str] = set()
+    test_classes: list[Type[LocalizationTestCase]] = []
 
     for module in test_modules:
 
@@ -48,7 +48,7 @@ def _find_tests() -> List[Type[LocalizationTestCase]]:
     return test_classes
 
 
-def run_tests(configuration: Configuration, collection: LocalizedCollection) -> List[TestResult]:
+def run_tests(configuration: Configuration, collection: LocalizedCollection) -> list[TestResult]:
     """Run all tests."""
 
     test_classes = _find_tests()

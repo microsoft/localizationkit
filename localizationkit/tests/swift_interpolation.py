@@ -1,7 +1,7 @@
 """Swift interpolation."""
 
 import re
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -14,14 +14,14 @@ class SwiftInterpolation(LocalizationTestCase):
         return "swift_interpolation"
 
     @classmethod
-    def default_settings(cls) -> Dict[str, Any]:
+    def default_settings(cls) -> dict[str, Any]:
         return {}
 
     @classmethod
     def is_opt_in(cls) -> bool:
         return True
 
-    def run_test(self) -> List[Tuple[str, str]]:
+    def run_test(self) -> list[tuple[str, str]]:
 
         violations = []
 

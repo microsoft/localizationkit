@@ -1,6 +1,6 @@
 """Checks that the value is set."""
 
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -13,12 +13,12 @@ class HasValue(LocalizationTestCase):
         return "has_value"
 
     @classmethod
-    def default_settings(cls) -> Dict[str, Any]:
+    def default_settings(cls) -> dict[str, Any]:
         return {"default_language_only": False}
 
-    def run_test(self) -> List[Tuple[str, str]]:
+    def run_test(self) -> list[tuple[str, str]]:
 
-        violations: List[Tuple[str, str]] = []
+        violations: list[tuple[str, str]] = []
 
         if self.get_setting("default_language_only"):
             test_collection = self.collection.strings_for_language(

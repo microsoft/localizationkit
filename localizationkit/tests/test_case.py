@@ -1,7 +1,7 @@
 """Base type for localization."""
 
 import abc
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from localizationkit.configuration import Configuration
 from localizationkit.exceptions import LocalizationKitException
@@ -19,7 +19,7 @@ class LocalizationTestCase(abc.ABC):
 
     configuration: Configuration
     collection: LocalizedCollection
-    test_settings: Dict[str, Any]
+    test_settings: dict[str, Any]
 
     def __init__(self, configuration: Configuration, collection: LocalizedCollection):
         self.configuration = configuration
@@ -46,7 +46,7 @@ class LocalizationTestCase(abc.ABC):
 
     @classmethod
     @abc.abstractmethod
-    def default_settings(cls) -> Dict[str, Any]:
+    def default_settings(cls) -> dict[str, Any]:
         """Get the default settings for the test.
 
         :returns: The default settings for the test
@@ -65,7 +65,7 @@ class LocalizationTestCase(abc.ABC):
         return False
 
     @abc.abstractmethod
-    def run_test(self) -> List[Tuple[str, str]]:
+    def run_test(self) -> list[tuple[str, str]]:
         """Run the test
 
         :returns: The list of violations encountered

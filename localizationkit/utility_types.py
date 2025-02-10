@@ -1,7 +1,5 @@
 """Utility types for tests."""
 
-from typing import List, Optional, Tuple
-
 
 class TestResult:
     """A simple result type
@@ -12,9 +10,9 @@ class TestResult:
 
     _success: bool
     name: str
-    violations: Optional[List[Tuple[str, str]]]
+    violations: list[tuple[str, str]] | None
 
-    def __init__(self, success: bool, name: str, violations: Optional[List[Tuple[str, str]]]):
+    def __init__(self, success: bool, name: str, violations: list[tuple[str, str]] | None):
         self._success = success
         self.name = name
         self.violations = violations
@@ -37,7 +35,7 @@ class TestResult:
         return TestResult(True, name, None)
 
     @staticmethod
-    def failure(name: str, violations: Optional[List[Tuple[str, str]]]) -> "TestResult":
+    def failure(name: str, violations: list[tuple[str, str]] | None) -> "TestResult":
         """Create a new failure result.
 
         :param name: The name of the test
