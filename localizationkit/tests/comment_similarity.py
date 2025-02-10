@@ -1,7 +1,7 @@
 """Comment similarity."""
 
 import difflib
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -17,7 +17,7 @@ class CheckCommentSimilarity(LocalizationTestCase):
     def default_settings(cls) -> Dict[str, Any]:
         return {"maximum_similarity_ratio": 0.5}
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
 
         maximum_similarity_ratio = self.get_setting("maximum_similarity_ratio")
 
@@ -31,7 +31,10 @@ class CheckCommentSimilarity(LocalizationTestCase):
 
             if similarity > maximum_similarity_ratio:
                 violations.append(
-                    f"Value and comment exceeded similarity ratio of {maximum_similarity_ratio}: {string}"
+                    (
+                        f"Value and comment exceeded similarity ratio of {maximum_similarity_ratio}: {string}",
+                        string.language_code,
+                    )
                 )
                 continue
 

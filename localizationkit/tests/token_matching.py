@@ -1,6 +1,6 @@
 """Token matching."""
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -16,7 +16,7 @@ class TokenMatching(LocalizationTestCase):
     def default_settings(cls) -> Dict[str, Any]:
         return {"allow_missing_defaults": False}
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
 
         violations = []
 
@@ -46,7 +46,10 @@ class TokenMatching(LocalizationTestCase):
                 translation_tokens = sorted(string.tokens())
                 if default_tokens != translation_tokens:
                     violations.append(
-                        f"The tokens for {language_code} do not match the default language: {string.key}"
+                        (
+                            f"The tokens for {language_code} do not match the default language: {string.key}",
+                            string.language_code,
+                        )
                     )
 
         return violations

@@ -1,6 +1,6 @@
 """Duplicate keys."""
 
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Set, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -16,7 +16,7 @@ class DuplicateKeys(LocalizationTestCase):
     def default_settings(cls) -> Dict[str, Any]:
         return {"all_languages": False}
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
 
         violations = []
 
@@ -35,7 +35,10 @@ class DuplicateKeys(LocalizationTestCase):
 
                 if string.key in keys:
                     violations.append(
-                        f"The key '{string.key}' appears for multiple strings. e.g. {string}"
+                        (
+                            f"The key '{string.key}' appears for multiple strings. e.g. {string}",
+                            string.language_code,
+                        )
                     )
                     continue
 

@@ -1,7 +1,7 @@
 """Objective-C alternative tokens."""
 
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -26,7 +26,7 @@ class ObjectivecAlternativeTokens(LocalizationTestCase):
     def is_opt_in(cls) -> bool:
         return True
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
 
         violations = []
 
@@ -35,7 +35,12 @@ class ObjectivecAlternativeTokens(LocalizationTestCase):
         for string in self.collection.localized_strings:
 
             if pattern.findall(string.value):
-                violations.append(f"Objective-C alternative tokens were found in string: {string}")
+                violations.append(
+                    (
+                        f"Objective-C alternative tokens were found in string: {string}",
+                        string.language_code,
+                    )
+                )
                 continue
 
         return violations

@@ -73,7 +73,7 @@ for result in results:
         print("The following test failed:", result.name)
         print("Failures encountered:")
         for violation in result.violations:
-            print(violation)
+            print(violation[0]) # The other value in the tuple is the language code
 ```
 
 ### Not running the tests

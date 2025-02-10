@@ -1,7 +1,7 @@
 """Invalid tokens."""
 
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -17,7 +17,7 @@ class InvalidTokens(LocalizationTestCase):
     def default_settings(cls) -> Dict[str, Any]:
         return {}
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
 
         violations = []
 
@@ -28,6 +28,11 @@ class InvalidTokens(LocalizationTestCase):
 
             # Any matches are a bad thing
             if matches and len(matches) > 0:
-                violations.append(f"Translation contains invalid tokens ({matches}): {string}")
+                violations.append(
+                    (
+                        f"Translation contains invalid tokens ({matches}): {string}",
+                        string.language_code,
+                    )
+                )
 
         return violations

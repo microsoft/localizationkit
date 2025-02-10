@@ -1,6 +1,6 @@
 """Placeholder token explanation."""
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -20,7 +20,7 @@ class PlaceholderTokenExplanation(LocalizationTestCase):
     def is_opt_in(cls) -> bool:
         return True
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
 
         violations = []
 
@@ -33,12 +33,18 @@ class PlaceholderTokenExplanation(LocalizationTestCase):
 
             if len(extra_in_tokens) != 0:
                 violations.append(
-                    f"Tokens are not described in the comment ({extra_in_tokens}): {string}"
+                    (
+                        f"Tokens are not described in the comment ({extra_in_tokens}): {string}",
+                        string.language_code,
+                    )
                 )
 
             if len(extra_in_comments) != 0:
                 violations.append(
-                    f"Extra tokens appear in the comment ({extra_in_comments}): {string}"
+                    (
+                        f"Extra tokens appear in the comment ({extra_in_comments}): {string}",
+                        string.language_code,
+                    )
                 )
 
         return violations

@@ -1,6 +1,6 @@
 """Checks for comments."""
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from localizationkit.tests.test_case import LocalizationTestCase
 
@@ -20,7 +20,7 @@ class CommentLinebreaks(LocalizationTestCase):
     def is_opt_in(cls) -> bool:
         return True
 
-    def run_test(self) -> List[str]:
+    def run_test(self) -> List[Tuple[str, str]]:
         violations = []
 
         for string in self.collection.strings_for_language(self.configuration.default_language()):
@@ -29,6 +29,6 @@ class CommentLinebreaks(LocalizationTestCase):
                 continue
 
             if "\n" in string.comment or "\r" in string.comment:
-                violations.append(f"Comment contains linebreaks: {string}")
+                violations.append((f"Comment contains linebreaks: {string}", string.language_code))
 
         return violations
