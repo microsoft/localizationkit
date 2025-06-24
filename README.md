@@ -216,7 +216,7 @@ Checks that strings do not contain Swift style interpolation values since these 
 Identifier: `token_adjacency`
 Opt-In: `true`
 
-Checks that attempts for pluralization or other similar operations are not in place. .e.g. `Open %@s in the app` doesn't translate well. 
+Checks that attempts for pluralization or other similar operations are not in place, e.g. `Open %@s in the app` doesn't translate well. 
 
 _Note: It is recommended that this is run on latin alphabet using languages only._
 
