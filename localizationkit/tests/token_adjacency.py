@@ -39,12 +39,12 @@ class TokenAdjacency(LocalizationTestCase):
                 continue
 
             for token, start, end in tokens:
-                preceeding_char = string.value[start - 1] if start > 0 else None
-                if preceeding_char:
-                    if preceeding_char not in allowed_characters:
+                preceding_char = string.value[start - 1] if start > 0 else None
+                if preceding_char:
+                    if preceding_char not in allowed_characters:
                         violations.append(
                             (
-                                f"Token '{token}' is directly preceded by '{preceeding_char}' in string: {string}",
+                                f"Token '{token}' is directly preceded by '{preceding_char}' in string: {string}",
                                 string.language_code,
                             )
                         )
