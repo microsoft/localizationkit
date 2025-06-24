@@ -49,4 +49,4 @@ def test_token_adjacency(configuration):
             configuration, collection
         )
         result = token_adjacency_test.execute()
-        assert result.succeeded(), f"Failed for string: {good_strings}"
+        assert result.succeeded(), f"Failed for string: {good_string}"
