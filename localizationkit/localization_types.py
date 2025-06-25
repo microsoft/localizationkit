@@ -36,6 +36,14 @@ class LocalizedString:
         """
         return LocalizedString._TOKEN_PATTERN.findall(self.value)
 
+    def tokens_with_positions(self) -> list[tuple[str, int, int]]:
+        """Find and return the tokens in the string with their start and end position.
+
+        :returns: The list of tuples containing the token, start, and end for each.
+        """
+        tokens = LocalizedString._TOKEN_PATTERN.finditer(self.value)
+        return [(match.group(0), match.start(), match.end()) for match in tokens]
+
     def comment_tokens(self) -> list[str]:
         """Find and return the tokens in the comment string.
 

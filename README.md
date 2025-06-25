@@ -211,6 +211,24 @@ Opt-In: `true`
 
 Checks that strings do not contain Swift style interpolation values since these cannot be localized.
 
+## Token Adjacency
+
+Identifier: `token_adjacency`
+Opt-In: `true`
+
+Checks that attempts for pluralization or other similar operations are not in place, e.g. `Open %@s in the app` doesn't translate well. 
+
+_Note: It is recommended that this is run on latin alphabet using languages only._
+
+<details>
+    <summary>Configuration</summary>
+
+| Parameter | Type | Acceptable Values | Default | Details | 
+| --- | --- | --- | --- | --- |
+| `only_check_language` | str or `None` | Language code | `None` | Set to only check a particular language. **Recommended** |
+
+</details>
+
 ## Token Matching
 
 Identifier: `token_matching`
