@@ -28,6 +28,9 @@ def test_invalid_tokens(configuration):
         (True, localizationkit.LocalizedString("Key", "This is %() off", "Some comment", "en")),
         (False, localizationkit.LocalizedString("Key", "This is % off", "Some comment", "en")),
         (False, localizationkit.LocalizedString("Key", "This is %% off", "Some comment", "en")),
+        (False, localizationkit.LocalizedString("Key", "5 TB (1%%)", "Some comment", "en")),
+        (False, localizationkit.LocalizedString("Key", "Uploading %1$d of %2$d (%3$d%%)", "Some comment", "en")),
+        (True, localizationkit.LocalizedString("Key", "This is %% and %* off", "Some comment", "en")),
         (False, localizationkit.LocalizedString("Key", "This is %d off", "Some comment", "en")),
     ]
 
