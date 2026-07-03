@@ -12,9 +12,7 @@ def test_key_length(configuration):
     good_strings = [
         localizationkit.LocalizedString("Key", "Value", "Comment", "en"),
         localizationkit.LocalizedString("Longer key", "Value", "Comment", "en"),
-        localizationkit.LocalizedString(
-            "This is a decently long key to run tests on", "Value", "Comment", "en"
-        ),
+        localizationkit.LocalizedString("This is a decently long key to run tests on", "Value", "Comment", "en"),
     ]
 
     bad_strings = [

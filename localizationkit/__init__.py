@@ -1,32 +1,36 @@
 """Toolkit for validation of localized strings."""
 
 import inspect
-from typing import Type
 
+from localizationkit import tests
 from localizationkit.configuration import Configuration
 from localizationkit.exceptions import LocalizationKitException
 from localizationkit.localization_types import LocalizedCollection, LocalizedString
-from localizationkit.utility_types import TestResult
 from localizationkit.tests.test_case import LocalizationTestCase
+from localizationkit.utility_types import TestResult
 
-from localizationkit import tests
+__all__ = [
+    "Configuration",
+    "LocalizationKitException",
+    "LocalizationTestCase",
+    "LocalizedCollection",
+    "LocalizedString",
+    "TestResult",
+    "run_tests",
+]
 
 
-def _find_tests() -> list[Type[LocalizationTestCase]]:
+def _find_tests() -> list[type[LocalizationTestCase]]:
     """Find all the tests."""
 
-    test_module_names = [
-        module_name for module_name in dir(tests) if not module_name.startswith("__")
-    ]
+    test_module_names = [module_name for module_name in dir(tests) if not module_name.startswith("__")]
     test_modules = [getattr(tests, name) for name in test_module_names]
 
     names_seen: set[str] = set()
-    test_classes: list[Type[LocalizationTestCase]] = []
+    test_classes: list[type[LocalizationTestCase]] = []
 
     for module in test_modules:
-
         for reference_name in dir(module):
-
             reference = getattr(module, reference_name)
 
             if not inspect.isclass(reference):
@@ -39,9 +43,7 @@ def _find_tests() -> list[Type[LocalizationTestCase]]:
                 continue
 
             if reference.__name__ in names_seen:
-                raise LocalizationKitException(
-                    "At least 2 classes exist with the same name: " + reference.__name__
-                )
+                raise LocalizationKitException("At least 2 classes exist with the same name: " + reference.__name__)
 
             test_classes.append(reference)
 

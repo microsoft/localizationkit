@@ -26,17 +26,13 @@ def test_alternative_tokens(configuration):
     for value in good_values:
         string = localizationkit.LocalizedString("Key", value, "Comment", "en")
         collection = localizationkit.LocalizedCollection([string])
-        test = localizationkit.tests.swift_interpolation.SwiftInterpolation(
-            configuration, collection
-        )
+        test = localizationkit.tests.swift_interpolation.SwiftInterpolation(configuration, collection)
         result = test.execute()
         assert result.succeeded(), str(result.violations)
 
     for value in bad_values:
         string = localizationkit.LocalizedString("Key", value, "Comment", "en")
         collection = localizationkit.LocalizedCollection([string])
-        test = localizationkit.tests.swift_interpolation.SwiftInterpolation(
-            configuration, collection
-        )
+        test = localizationkit.tests.swift_interpolation.SwiftInterpolation(configuration, collection)
         result = test.execute()
         assert result.succeeded() is False

@@ -28,13 +28,11 @@ class TokenMatching(LocalizationTestCase):
             default_token_map[string.key] = sorted(string.tokens())
 
         for language_code in self.collection.languages():
-
             if language_code == self.configuration.default_language():
                 continue
 
             for string in self.collection.strings_for_language(language_code):
-
-                default_tokens = default_token_map.get(string.key, None)
+                default_tokens = default_token_map.get(string.key)
 
                 # Sometimes a string can be removed from the default language
                 # before it is removed from other languages (due to automation)

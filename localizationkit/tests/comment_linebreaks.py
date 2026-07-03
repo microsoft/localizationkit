@@ -24,7 +24,6 @@ class CommentLinebreaks(LocalizationTestCase):
         violations = []
 
         for string in self.collection.strings_for_language(self.configuration.default_language()):
-
             if string.comment is None:
                 continue
 

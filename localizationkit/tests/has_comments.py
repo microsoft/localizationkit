@@ -24,7 +24,6 @@ class HasComments(LocalizationTestCase):
         violations = []
 
         for string in self.collection.strings_for_language(self.configuration.default_language()):
-
             if string.comment is None:
                 violations.append((f"Comment was empty: {string}", string.language_code))
                 continue
@@ -38,10 +37,7 @@ class HasComments(LocalizationTestCase):
                 )
                 continue
 
-            if (
-                minimum_comment_words >= 0
-                and len(string.comment.split(" ")) < minimum_comment_words
-            ):
+            if minimum_comment_words >= 0 and len(string.comment.split(" ")) < minimum_comment_words:
                 violations.append(
                     (
                         f"Comment did not meet minimum word count of {minimum_comment_words}: {string}",

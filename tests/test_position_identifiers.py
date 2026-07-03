@@ -12,21 +12,15 @@ def test_token_position_identifiers(configuration):
     test_cases = [
         (
             True,
-            localizationkit.LocalizedString(
-                "Key", "This is a string with no tokens", "Some comment", "en"
-            ),
+            localizationkit.LocalizedString("Key", "This is a string with no tokens", "Some comment", "en"),
         ),
         (
             True,
-            localizationkit.LocalizedString(
-                "Key", "This is a string with one token: %@", "Some comment", "en"
-            ),
+            localizationkit.LocalizedString("Key", "This is a string with one token: %@", "Some comment", "en"),
         ),
         (
             True,
-            localizationkit.LocalizedString(
-                "Key", "This is a string with two tokens: %1$@ %2$@", "Some comment", "en"
-            ),
+            localizationkit.LocalizedString("Key", "This is a string with two tokens: %1$@ %2$@", "Some comment", "en"),
         ),
         (
             False,
@@ -47,9 +41,7 @@ def test_token_position_identifiers(configuration):
 
     for expected_result, string in test_cases:
         collection = localizationkit.LocalizedCollection([string])
-        test = localizationkit.tests.token_position_identifiers.TokenPositionIdentifiers(
-            configuration, collection
-        )
+        test = localizationkit.tests.token_position_identifiers.TokenPositionIdentifiers(configuration, collection)
         result = test.execute()
         if expected_result:
             assert result.succeeded()

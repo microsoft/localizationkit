@@ -33,7 +33,6 @@ class ObjectivecAlternativeTokens(LocalizationTestCase):
         pattern = re.compile(r"(%(?:[0-9]+)(?:\.[0-9]+)?[@a-z][a-z]?)", flags=re.DOTALL)
 
         for string in self.collection.localized_strings:
-
             if pattern.findall(string.value):
                 violations.append(
                     (

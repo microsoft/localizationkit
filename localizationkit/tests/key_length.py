@@ -28,7 +28,6 @@ class KeyLength(LocalizationTestCase):
             return violations
 
         for string in self.collection.strings_for_language(self.configuration.default_language()):
-
             key = string.key
 
             if key is None:

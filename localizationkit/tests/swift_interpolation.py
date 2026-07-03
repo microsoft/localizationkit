@@ -28,7 +28,6 @@ class SwiftInterpolation(LocalizationTestCase):
         pattern = re.compile(r'\\\([^\)"]*\)', flags=re.DOTALL)
 
         for string in self.collection.localized_strings:
-
             if pattern.findall(string.value):
                 violations.append(
                     (

@@ -36,17 +36,13 @@ def test_token_adjacency(configuration):
     for bad_string in bad_strings:
         string = localizationkit.LocalizedString("Key", bad_string, "", "en")
         collection = localizationkit.LocalizedCollection([string])
-        token_adjacency_test = localizationkit.tests.token_adjacency.TokenAdjacency(
-            configuration, collection
-        )
+        token_adjacency_test = localizationkit.tests.token_adjacency.TokenAdjacency(configuration, collection)
         result = token_adjacency_test.execute()
         assert result.succeeded() is False, f"This should have failed: {bad_string}"
 
     for good_string in good_strings:
         string = localizationkit.LocalizedString("Key", good_string, "", "en")
         collection = localizationkit.LocalizedCollection([string])
-        token_adjacency_test = localizationkit.tests.token_adjacency.TokenAdjacency(
-            configuration, collection
-        )
+        token_adjacency_test = localizationkit.tests.token_adjacency.TokenAdjacency(configuration, collection)
         result = token_adjacency_test.execute()
         assert result.succeeded(), f"Failed for string: {good_string}"

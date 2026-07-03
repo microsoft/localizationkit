@@ -13,23 +13,15 @@ def test_token_matching(configuration):
         (
             True,
             [
-                localizationkit.LocalizedString(
-                    "Key", "This is a string with no tokens", "Some comment", "en"
-                ),
-                localizationkit.LocalizedString(
-                    "Key", "This is a string with no tokens", "Some comment", "fr"
-                ),
+                localizationkit.LocalizedString("Key", "This is a string with no tokens", "Some comment", "en"),
+                localizationkit.LocalizedString("Key", "This is a string with no tokens", "Some comment", "fr"),
             ],
         ),
         (
             True,
             [
-                localizationkit.LocalizedString(
-                    "Key", "This is a string with a token: %@", "Some comment", "en"
-                ),
-                localizationkit.LocalizedString(
-                    "Key", "This is a string with a token: %@", "Some comment", "fr"
-                ),
+                localizationkit.LocalizedString("Key", "This is a string with a token: %@", "Some comment", "en"),
+                localizationkit.LocalizedString("Key", "This is a string with a token: %@", "Some comment", "fr"),
             ],
         ),
         (
