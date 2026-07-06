@@ -21,10 +21,17 @@ class InvalidTokens(LocalizationTestCase):
 
         violations = []
 
-        invalid_token_pattern = re.compile(r"(%[^@%\.a-zA-Z0-9 ]+)", flags=re.DOTALL)
+        # "%%" is the printf escape for a literal percent sign and is always
+        # valid, so consume it first in the alternation. The capturing group
+        # only matches a "%" that starts something which is *not* a valid
+        # conversion (i.e. is followed by a character other than a conversion
+        # flag/specifier, "@", "%", ".", alphanumeric, or space). Matching "%%"
+        # via the first branch leaves an empty capture group, which is filtered
+        # out below, so "50%%)" no longer trips on the trailing "%)".
+        invalid_token_pattern = re.compile(r"%%|(%[^@%\.a-zA-Z0-9 ]+)", flags=re.DOTALL)
 
         for string in self.collection.localized_strings:
-            matches = invalid_token_pattern.findall(string.value)
+            matches = [match for match in invalid_token_pattern.findall(string.value) if match]
 
             # Any matches are a bad thing
             if matches and len(matches) > 0:
