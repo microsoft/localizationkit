@@ -12,9 +12,7 @@ def test_invalid_tokens(configuration):
     test_cases = [
         (
             False,
-            localizationkit.LocalizedString(
-                "Key", "This is a string with no tokens", "Some comment", "en"
-            ),
+            localizationkit.LocalizedString("Key", "This is a string with no tokens", "Some comment", "en"),
         ),
         (False, localizationkit.LocalizedString("Key", "%", "Some comment", "en")),
         (False, localizationkit.LocalizedString("Key", "25%", "Some comment", "en")),

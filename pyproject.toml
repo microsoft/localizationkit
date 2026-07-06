@@ -1,45 +1,75 @@
-[tool.poetry]
+[project]
 name = "localizationkit"
-version = "3.1.0"
+dynamic = ["version"]
 description = "String localization tests"
-
 license = "MIT"
-
-authors = ["Dale Myers <dalemy@microsoft.com>"]
-
-readme = 'README.md'
-
-repository = "https://github.com/Microsoft/localizationkit"
-homepage = "https://github.com/Microsoft/localizationkit"
-
-keywords = ['localization', 'strings', 'tests']
-
+authors = [{ name = "Dale Myers", email = "dalemy@microsoft.com" }]
+readme = "README.md"
+keywords = ["localization", "strings", "tests"]
+requires-python = ">=3.11,<4.0"
 classifiers = [
-    'Development Status :: 3 - Alpha',
-    'Intended Audience :: Developers',
-    'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
-    'Programming Language :: Python :: 3.11',
-    'Topic :: Software Development',
-    'Topic :: Software Development :: Testing',
-    'Topic :: Utilities',
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.urls]
+homepage = "https://github.com/Microsoft/localizationkit"
+repository = "https://github.com/Microsoft/localizationkit"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "pre-commit>=4.0.0",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.20",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-toml = "^0.10.2"
+[tool.ruff]
+line-length = 120
+target-version = "py311"
 
-[tool.poetry.dev-dependencies]
-black = "25.1.0"
-mypy = "1.15.0"
-pylint = "3.3.4"
-pytest = "^9.0.3"
-pytest-cov = "^4.1.0"
-types-toml = "^0.10.8.7"
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM", "PL"]
+ignore = [
+    "N818",    # exception-name-suffix: LocalizationKitException is public API
+    "PLR0911", # too-many-return-statements
+    "PLR0912", # too-many-branches
+    "PLR0913", # too-many-arguments
+    "PLR0915", # too-many-statements
+    "PLR2004", # magic-value-comparison
+]
 
+[tool.ruff.lint.per-file-ignores]
+# Submodules are imported for test discovery, not direct use.
+"localizationkit/tests/__init__.py" = ["F401"]
+"tests/*" = ["B017"] # pytest.raises(Exception) is acceptable in tests
+
+[tool.mypy]
+python_version = "3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--doctest-modules"
+
+[tool.coverage.run]
+source = ["localizationkit"]
+
+[tool.coverage.report]
+show_missing = true
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"

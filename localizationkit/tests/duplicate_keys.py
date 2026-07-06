@@ -22,17 +22,12 @@ class DuplicateKeys(LocalizationTestCase):
 
         all_languages = self.get_setting("all_languages")
 
-        if all_languages:
-            languages_to_check = self.collection.languages()
-        else:
-            languages_to_check = [self.configuration.default_language()]
+        languages_to_check = self.collection.languages() if all_languages else [self.configuration.default_language()]
 
         for language in languages_to_check:
-
             keys: set[str] = set()
 
             for string in self.collection.strings_for_language(language):
-
                 if string.key in keys:
                     violations.append(
                         (

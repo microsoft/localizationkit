@@ -1,7 +1,8 @@
 """Types for localization."""
 
 import re
-from typing import ClassVar, Pattern
+from re import Pattern
+from typing import ClassVar
 
 
 class LocalizedString:
@@ -13,9 +14,7 @@ class LocalizedString:
     :param language_code: The language code for the language the string is in
     """
 
-    _TOKEN_REGEX: ClassVar[str] = (
-        r"(%(?:[0-9]+\$)?[0-9]*\.?[0-9]*(?:h|hh|l|ll|q|L|z|t|j){0,2}[dDuUxXoOfFeEgGcCsSaAp@])"
-    )
+    _TOKEN_REGEX: ClassVar[str] = r"(%(?:[0-9]+\$)?[0-9]*\.?[0-9]*(?:h|hh|l|ll|q|L|z|t|j){0,2}[dDuUxXoOfFeEgGcCsSaAp@])"
     _TOKEN_PATTERN: ClassVar[Pattern] = re.compile(_TOKEN_REGEX, flags=re.DOTALL)
 
     key: str
@@ -92,9 +91,7 @@ class LocalizedCollection:
 
         :returns: The list of strings with the matching language code
         """
-        return [
-            string for string in self.localized_strings if string.language_code == language_code
-        ]
+        return [string for string in self.localized_strings if string.language_code == language_code]
 
     def languages(self) -> list[str]:
         """Return the list of languages in the collection.

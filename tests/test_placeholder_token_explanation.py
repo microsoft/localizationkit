@@ -12,9 +12,7 @@ def test_placeholder_token_explanation(configuration):
     test_cases = [
         (
             True,
-            localizationkit.LocalizedString(
-                "Key", "This is a string with no tokens", "Some comment", "en"
-            ),
+            localizationkit.LocalizedString("Key", "This is a string with no tokens", "Some comment", "en"),
         ),
         (
             True,
@@ -54,9 +52,7 @@ def test_placeholder_token_explanation(configuration):
         ),
         (
             False,
-            localizationkit.LocalizedString(
-                "Key", "This is a string", "Some comment %@ extra token explanation", "en"
-            ),
+            localizationkit.LocalizedString("Key", "This is a string", "Some comment %@ extra token explanation", "en"),
         ),
     ]
 

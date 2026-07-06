@@ -32,17 +32,13 @@ def test_comment_linebreaks(configuration):
     for comment in bad_comments:
         string = localizationkit.LocalizedString("Key", "Value", comment, "en")
         collection = localizationkit.LocalizedCollection([string])
-        comment_linebreak_test = localizationkit.tests.comment_linebreaks.CommentLinebreaks(
-            configuration, collection
-        )
+        comment_linebreak_test = localizationkit.tests.comment_linebreaks.CommentLinebreaks(configuration, collection)
         result = comment_linebreak_test.execute()
         assert result.succeeded() is False
 
     for comment in good_comments:
         string = localizationkit.LocalizedString("Key", "Value", comment, "en")
         collection = localizationkit.LocalizedCollection([string])
-        comment_linebreak_test = localizationkit.tests.comment_linebreaks.CommentLinebreaks(
-            configuration, collection
-        )
+        comment_linebreak_test = localizationkit.tests.comment_linebreaks.CommentLinebreaks(configuration, collection)
         result = comment_linebreak_test.execute()
         assert result.succeeded()

@@ -1,8 +1,7 @@
 """Configuration for localization tests."""
 
-from typing import Any, cast
-
-import toml
+import tomllib
+from typing import Any
 
 
 class Configuration:
@@ -54,5 +53,5 @@ class Configuration:
         :returns: The parsed configuration object
         """
 
-        with open(file_path, encoding="utf-8") as config_file:
-            return Configuration(cast(dict[str, Any], toml.load(config_file)))
+        with open(file_path, "rb") as config_file:
+            return Configuration(tomllib.load(config_file))
